@@ -13,7 +13,7 @@
             --text-color: #1d1d1f;
             --text-secondary: #86868b;
             --border-color: #d2d2d7;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
             --header-bg: rgba(255, 255, 255, 0.8);
         }
 
@@ -24,7 +24,7 @@
             --text-color: #f5f5f7;
             --text-secondary: #86868b;
             --border-color: #38383a;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            --shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
             --header-bg: rgba(28, 28, 30, 0.8);
         }
 
@@ -35,6 +35,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 5rem;
         }
 
         body {
@@ -54,14 +55,14 @@
             background-color: var(--header-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 0.0625rem solid var(--border-color);
             padding: 1rem 0;
         }
 
         .header-content {
-            max-width: 800px;
+            max-width: 50rem;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 1.25rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -77,7 +78,7 @@
             background: none;
             border: none;
             cursor: pointer;
-            padding: 8px;
+            padding: 0.5rem;
             border-radius: 50%;
             color: var(--text-color);
             display: flex;
@@ -90,43 +91,43 @@
         }
 
         .container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
+            max-width: 50rem;
+            margin: 2.5rem auto;
+            padding: 0 1.25rem;
         }
 
         .card {
             background-color: var(--card-bg);
-            border-radius: 18px;
-            padding: 40px;
+            border-radius: 1.125rem;
+            padding: 2.5rem;
             box-shadow: var(--shadow);
-            margin-bottom: 40px;
+            margin-bottom: 2.5rem;
         }
 
         h2 {
             margin-top: 0;
             font-size: 1.8rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 15px;
-            margin-bottom: 25px;
+            border-bottom: 0.0625rem solid var(--border-color);
+            padding-bottom: 0.9375rem;
+            margin-bottom: 1.5625rem;
         }
 
         h3 {
-            margin-top: 30px;
+            margin-top: 1.875rem;
             font-size: 1.2rem;
             color: var(--primary-color);
         }
 
         p,
         ul {
-            margin-bottom: 16px;
+            margin-bottom: 1rem;
             color: var(--text-color);
         }
 
         .meta-text {
             font-size: 0.9rem;
             color: var(--text-secondary);
-            margin-bottom: 30px;
+            margin-bottom: 1.875rem;
             display: block;
         }
 
@@ -140,24 +141,24 @@
         }
 
         ul {
-            padding-left: 20px;
+            padding-left: 1.25rem;
         }
 
         li {
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
         }
 
         .nav-pills {
             display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
+            gap: 0.625rem;
+            margin-bottom: 1.875rem;
             justify-content: center;
         }
 
         .nav-pill {
-            padding: 8px 16px;
+            padding: 0.5rem 1rem;
             background-color: var(--card-bg);
-            border-radius: 20px;
+            border-radius: 1.25rem;
             font-size: 0.9rem;
             font-weight: 500;
             color: var(--text-color);
@@ -172,15 +173,15 @@
 
         footer {
             text-align: center;
-            padding: 40px 20px;
+            padding: 2.5rem 1.25rem;
             color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 37.5rem) {
             .card {
-                padding: 25px;
-                border-radius: 12px;
+                padding: 1.5625rem;
+                border-radius: 0.75rem;
             }
 
             h2 {
@@ -255,7 +256,7 @@
             <p>All financial transactions for subscriptions are handled directly by Apple via the App Store. We do not
                 process, store, or have access to your credit card or payment information.</p>
 
-            <h3>4. Children’s Privacy</h3>
+            <h3>4. Children's Privacy</h3>
             <p>The App is not intended for use by children under the age of 13. We do not knowingly collect personal
                 information from children. AdMob settings are configured to comply with applicable child safety
                 regulations.</p>
