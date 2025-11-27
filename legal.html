@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal - Tip Calculator</title>
+    <style>
+        :root {
+            --primary-color: #007AFF;
+            --bg-color: #f5f5f7;
+            --card-bg: #ffffff;
+            --text-color: #1d1d1f;
+            --text-secondary: #86868b;
+            --border-color: #d2d2d7;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --header-bg: rgba(255, 255, 255, 0.8);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #0A84FF;
+            --bg-color: #000000;
+            --card-bg: #1c1c1e;
+            --text-color: #f5f5f7;
+            --text-secondary: #86868b;
+            --border-color: #38383a;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            --header-bg: rgba(28, 28, 30, 0.8);
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--header-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(128, 128, 128, 0.1);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 18px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        p,
+        ul {
+            margin-bottom: 16px;
+            color: var(--text-color);
+        }
+
+        .meta-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .nav-pills {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .nav-pill {
+            padding: 8px 16px;
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-color);
+            box-shadow: var(--shadow);
+        }
+
+        .nav-pill:hover {
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 25px;
+                border-radius: 12px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>Tip Calculator Legal</h1>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+                <!-- Sun Icon -->
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    style="display: none;">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <!-- Moon Icon -->
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="nav-pills">
+            <a href="#privacy" class="nav-pill">Privacy Policy</a>
+            <a href="#terms" class="nav-pill">Terms of Use</a>
+        </div>
+
+        <!-- PRIVACY POLICY -->
+        <section id="privacy" class="card">
+            <h2>Privacy Policy</h2>
+            <span class="meta-text">Last Updated: <span class="dynamic-date">November 26, 2025</span></span>
+
+            <p>This Privacy Policy explains how "Tip Calculator – Free and Easy" ("the App") handles your information.
+                We respect your privacy and are committed to protecting it.</p>
+
+            <h3>1. Information Collection</h3>
+            <p><strong>We do not collect, store, or transmit any personally identifiable information.</strong></p>
+            <p>All calculations, settings, and data entered into the App remain locally on your device. We do not have
+                servers that store your data.</p>
+
+            <h3>2. Third-Party Services (Ads)</h3>
+            <p>The free version of the App uses <strong>Google AdMob</strong> to display advertisements. AdMob is a
+                third-party service that may collect certain data to serve personalized or non-personalized ads, such
+                as:</p>
+            <ul>
+                <li>Device identifiers (e.g., Advertising ID)</li>
+                <li>Location data (if allowed by your device settings)</li>
+                <li>App usage data</li>
+            </ul>
+            <p>This data is collected directly by Google, not by the App developer. You can learn more about how Google
+                uses data here: <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.
+            </p>
+
+            <h3>3. Subscriptions and Payments</h3>
+            <p>All financial transactions for subscriptions are handled directly by Apple via the App Store. We do not
+                process, store, or have access to your credit card or payment information.</p>
+
+            <h3>4. Children’s Privacy</h3>
+            <p>The App is not intended for use by children under the age of 13. We do not knowingly collect personal
+                information from children. AdMob settings are configured to comply with applicable child safety
+                regulations.</p>
+
+            <h3>5. Contact Us</h3>
+            <p>If you have any questions about this Privacy Policy, please contact us at: <a
+                    href="mailto:IssaDeveloper01@gmail.com">IssaDeveloper01@gmail.com</a></p>
+        </section>
+
+        <!-- TERMS OF USE -->
+        <section id="terms" class="card">
+            <h2>Terms of Use (EULA)</h2>
+            <span class="meta-text">Last Updated: <span class="dynamic-date">November 26, 2025</span></span>
+
+            <p>By downloading or using "Tip Calculator – Free and Easy", you agree to these Terms of Use. If you do not
+                agree, please do not use the App.</p>
+
+            <h3>1. License</h3>
+            <p>We grant you a revocable, non-exclusive, non-transferable, limited license to download, install, and use
+                the App strictly in accordance with these Terms and Apple's standard <a
+                    href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank">Licensed
+                    Application End User License Agreement (EULA)</a>.</p>
+
+            <h3>2. Pro Subscriptions</h3>
+            <p>The App offers an optional "Pro" subscription to remove advertisements.</p>
+            <ul>
+                <li><strong>Monthly Subscription:</strong> $0.99 per month</li>
+                <li><strong>Yearly Subscription:</strong> $9.99 per year</li>
+            </ul>
+
+            <p><strong>Automatic Renewal:</strong></p>
+            <ul>
+                <li>Payment will be charged to your Apple ID account at confirmation of purchase.</li>
+                <li>Subscription automatically renews unless auto-renew is turned off at least 24 hours before the end
+                    of the current period.</li>
+                <li>Your account will be charged for renewal within 24 hours prior to the end of the current period at
+                    the price listed above.</li>
+                <li>You can manage and cancel your subscriptions by going to your App Store Account Settings after
+                    purchase.</li>
+                <li>Any unused portion of a free trial period, if offered, will be forfeited when you purchase a
+                    subscription.</li>
+            </ul>
+
+            <h3>3. Intellectual Property</h3>
+            <p>The App, including its design, code, and graphics, is the property of the Developer and is protected by
+                copyright laws.</p>
+
+            <h3>4. Disclaimer of Warranties</h3>
+            <p>The App is provided "AS IS" and "AS AVAILABLE" without warranty of any kind, express or implied. We
+                specifically disclaim any implied warranties of merchantability, fitness for a particular purpose, or
+                non-infringement. We do not guarantee that the App will be error-free, secure, or uninterrupted.</p>
+
+            <h3>5. Limitation of Liability</h3>
+            <p>To the maximum extent permitted by law, the Developer shall not be liable for any direct, indirect,
+                incidental, special, consequential, or punitive damages, or any loss of profits or data, arising out of
+                your use or inability to use the App, even if we have been advised of the possibility of such damages.
+            </p>
+
+            <h3>6. Changes to Terms</h3>
+            <p>We reserve the right to modify these Terms at any time. Your continued use of the App following any
+                changes indicates your acceptance of the new Terms.</p>
+        </section>
+
+        <footer>
+            <p>&copy; <span id="year"></span> Tip Calculator – Free and Easy. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // 1. Dynamic Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 2. Dynamic "Last Updated" Date (Optional - currently set to today for fresh look)
+        // Uncomment to always show today's date
+        /*
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const today = new Date().toLocaleDateString('en-US', options);
+        document.querySelectorAll('.dynamic-date').forEach(el => el.textContent = today);
+        */
+
+        // 3. Theme Toggle Logic
+        const toggleBtn = document.getElementById('themeToggle');
+        const sunIcon = document.querySelector('.sun-icon');
+        const moonIcon = document.querySelector('.moon-icon');
+        const html = document.documentElement;
+
+        // Check local storage or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            html.setAttribute('data-theme', 'dark');
+            updateIcons(true);
+        } else {
+            html.setAttribute('data-theme', 'light');
+            updateIcons(false);
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcons(newTheme === 'dark');
+        });
+
+        function updateIcons(isDark) {
+            if (isDark) {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            } else {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
